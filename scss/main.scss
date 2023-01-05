@@ -1,0 +1,351 @@
+// RESET
+
+h1, a, p, body{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+// ADD FONTS
+
+@font-face {
+	font-family: 'ABCFavorit';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/ABC Favorit/ABCFavorit-Regular-Trial.woff2') format('woff2'), 
+		url('../fonts/ABC Favorit/ABCFavorit-Regular-Trial.woff') format('woff');
+}
+
+// VARIBLES
+
+$middleScreen: 991px;
+$smallScreen: 479px;
+$maxWidth: 1200;
+
+// MIXINS
+
+@mixin adaptiv-font-size($maxSize, $minSize) {
+    $addSize: $maxSize - $minSize;
+    $addMobileSize: $addSize + $addSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$minSize + px} + #{$addMobileSize} * ((100vw - 320px) / #{$maxWidth}));
+    }
+    @media (min-width: 767px) {
+        font-size: calc(#{$minSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    }
+}
+
+@mixin adaptiv-font-height($maxSize, $minSize) {
+    $addSize: $maxSize - $minSize;
+    $addMobileSize: $addSize + $addSize * 0.7;
+    @media (max-width: 767px) {
+        line-height: calc(#{$minSize + px} + #{$addMobileSize} * ((100vw - 320px) / #{$maxWidth}));
+    }
+    @media (min-width: 767px) {
+        line-height: calc(#{$minSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    }
+}
+
+// CSS
+
+//text
+p, a, h1{
+    font-family: 'ABCFavorit', sans-serif;
+    font-weight: 400;
+    color: #141414;
+}
+
+// header 
+
+.header{
+    padding: 8vw 10vw 0 23.5vw;
+    @media screen and (max-width: $middleScreen){
+        padding-top: 12vw;
+        padding-left: 18vw;
+    }
+    @media screen and (max-width: $smallScreen){
+        padding-top: 8vw;
+        padding-left: 8vw;
+    }
+    background-color: #fcf9ee;
+    .header__text{
+        .container{
+            display: flex;
+            &.header__string1{
+                justify-content: flex-end;
+                .header__letter:last-child{
+                    padding-right: 0.6vw;
+                }
+            }
+            &.header__string2{
+                margin-top: -1vw;
+                justify-content: space-between;
+                .header__word{
+                    display: flex;
+                    justify-content: flex-start;
+                }
+            }
+            h1{
+                display: inline;
+                &.header__letter{
+                    font-size: 14vw;
+                    line-height: 12.8vw;
+                    @media screen and (max-width: $middleScreen){
+                        font-size: 15vw;
+                        line-height: 12.5vw;
+                    }
+                    @media screen and (max-width: $smallScreen){
+                        font-size: 17vw;
+                        line-height: 16vw;
+                    }
+                    letter-spacing: -0.11em;
+                }
+                &.header__caption{
+                    margin-top: 1vw;
+                    font-size: 4vw;
+                    line-height: 3.5vw;
+                    @media screen and (max-width: $smallScreen){
+                        font-size: 5vw;
+                        line-height: 4vw;
+                    }
+                    letter-spacing: -.07em;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+// image-block 
+
+.image-block {
+    padding: 2vw 10vw 0 23.5vw;
+    background-color: #fcf9ee;
+    @media screen and (max-width: $middleScreen){
+        padding-left: 18vw;
+    }
+    @media screen and (max-width: $smallScreen){
+        padding-left: 8vw;
+    }
+    .image-block__container {
+        display: flex;
+        justify-content: space-between;
+        .picture-block {
+            z-index: 1;
+            &:last-child{
+                margin-left: 2.5vw;
+            }
+            .picture-block__border{
+                border: 3px solid rgb(36, 35, 35);
+                width: 32vw;
+                height: 45.4vw;
+                @media screen and (max-width: $middleScreen){
+                    width: 34.5vw;
+                    height: 49.5vw;
+                }
+                @media screen and (max-width: $smallScreen){
+                    width: 39.5vw;
+                    height: 57vw;
+                }
+                .picture-block__picture-mask{
+                    clip-path: inset(0);
+                    width: 31.5vw;
+                    height: 100%;
+                    max-width: 31.5vw;
+                    @media screen and (max-width: $middleScreen){
+                        width: 33.8vw;
+                        max-width: 33.8vw;
+                    }
+                    @media screen and (max-width: $smallScreen){
+                        width: 38vw;
+                        max-width: 38vw;
+                    }
+                    .picture-block__picture {
+                        width: 31.5vw;
+                        height: 100%;
+                        max-width: 31.5vw;
+                        @media screen and (max-width: $middleScreen){
+                            width: 34.5vw;
+                        max-width: 34.5vw;
+                        }
+                        @media screen and (max-width: $smallScreen){
+                            width: 39.5vw;
+                            max-width: 39.5vw;
+                        }
+                    }
+                }
+            }
+            .picture-block__caption{
+                padding-top: 0.5vw;
+                padding-bottom: 0.7vw;
+                @media screen and (max-width: $middleScreen){
+                    padding-top: 0.9vw;
+                }
+                @media screen and (max-width: $smallScreen){
+                    padding-top: 1.2vw;
+                }
+                display: flex;
+                justify-content: space-between;
+                .picture-block__caption-n{
+                    width: 50%;
+                }
+                .picture-block__caption-g{
+                    width: 50%;
+                }
+                p{
+                    font-size: .85vw;
+                    line-height: .85vw;
+                    letter-spacing: -.03em;
+                    @media screen and (max-width: $middleScreen){
+                        font-size: 1.5vw;
+                        line-height: 1.5vw;
+                    }
+                    @media screen and (max-width: $smallScreen){
+                        font-size: 3vw;
+                        line-height: 2.4vw;
+                    }
+                }
+            }
+        }
+        // .image-block__scotch-tape{
+        //     position: absolute;
+        //     z-index: 2;
+        //     width: 14vw;
+        //     height: 14vw;
+        //     mix-blend-mode: multiply;
+        // } dont working fkw
+    }
+    .jump-button-block {
+        width: 100%;
+        margin-top: 3vw;
+        display: flex;
+        justify-content:flex-end;
+        align-items: center;
+        .jump-button-block__link{
+            font-size: 1.5vw;
+            line-height: 1.5vw;
+            letter-spacing: -.05em;
+            
+            margin-right: .5vw;
+            @media screen and (max-width: $middleScreen){
+                font-size: 2vw;
+                line-height: 2vw;
+            }
+            @media screen and (max-width: $smallScreen){
+                margin-right: 4vw;
+                font-size: 4vw;
+                line-height: 4vw;
+                margin-top: 1vw;
+            }
+            // anim 
+            background-image: linear-gradient(currentColor, currentColor);
+            background-position: 0% 100%;
+            background-repeat: no-repeat;
+            background-size: 0% 2px;
+            background-position: right bottom;
+            transition: background-size .3s;
+            &:hover{
+                background-size: 100% 2px;
+                background-position: left bottom;
+            }
+        }
+        .jump-button-block__arrow-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 72px;
+            @media screen and (max-width: $middleScreen){
+                width: 7vw;
+                height: 7vw;
+            }
+            @media screen and (max-width: $smallScreen){
+                width: 11vw;
+                height: 11vw;
+            }
+            .jump-button-block__arrow-picture {
+                position: absolute;
+                width: 2.5vw;
+                height: 2.5vw;
+                @media screen and (max-width: $middleScreen){
+                    width: 4vw;
+                    height: 4vw;
+                }
+                @media screen and (max-width: $smallScreen){
+                    width: 6vw;
+                    height: 6vw;
+                }
+                transform: rotateZ(0);
+                transition-duration: .5s;
+            }
+            .jump-button-block__circle-picture {
+                position: absolute;
+                width: 5vw;
+                height: 5vw;
+                max-width: 5vw;
+                @media screen and (max-width: $middleScreen){
+                    width: 7vw;
+                    height: 7vw;
+                    max-width: 7vw;
+                }
+                @media screen and (max-width: $smallScreen){
+                    width: 11vw;
+                    height: 11vw;
+                    max-width: 11vw;
+                }
+                transform: scale(1, 1);
+                transition-duration: .5s;
+            }
+            &:hover{
+                .jump-button-block__arrow-picture{
+                    transform: rotateZ(360deg);
+                }
+                .jump-button-block__circle-picture{
+                    transform: scale(1.2, 1.2);
+                }
+            }
+        }
+    }
+}
+
+// ticker-block 
+.ticker-block {
+    padding-top: 10vw;
+    padding-bottom: 7vw;
+    background-color: #fcf9ee;
+    .ticker-block__container {
+        height: 5vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+        border-style: solid none;
+        border-width: 0.2vw;
+        border-color: #000;
+        background-color: #ddc92a;
+        .ticker-block__repeat-text {
+            font-size: 2.5vw;
+            line-height: 2.5vw;
+            letter-spacing: -.06em;
+            white-space: nowrap;
+            animation: ticker-block__repeat-text 5s infinite linear;
+            &::after{
+                content: "O NOT SCROLL · DEPLACE SHOP · D";
+            }
+        }
+    }
+}
+
+// animation 
+
+@keyframes ticker-block__repeat-text{
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        transform: translateX(-50%)
+    }
+}
